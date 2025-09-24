@@ -96,7 +96,7 @@ jobs:
           echo "tag_name=${{ steps.get-ref.outputs.tag }}" >> $GITHUB_OUTPUT
 
   build-push-arm64:
-    runs-on: winston-rpi
+    runs-on: ARM64
     permissions:
       contents: read
       packages: write
