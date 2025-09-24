@@ -34,12 +34,12 @@ session:
 	@TAG="${TAG}"
 	@ENTRYPOINT="${ENTRYPOINT}"
 	if [ "${CONT_NAME}" == "" ]; then
-		CONT_NAME="image_builder"
+		CONT_NAME="image_tester"
 	fi
 	if [ "${TAG}" == "" ]; then
-		TAG="test"
+		TAG="stable"
 	fi
-	IMG_NAME=ucsd_robocar:$${TAG}
+	IMG_NAME=ghcr.io/ucsd-ecemae-148/ucsd_robocar:$${TAG}
 	if [ "${RUNTIME}" = "nvidia" ]; then
 		echo "RUNTIME is set to nvidia"
 		xhost +
@@ -56,10 +56,10 @@ session:
 			-v /dev/bus/usb:/dev/bus/usb \
 			--device-cgroup-rule='c 189:* rmw' \
 			--device /dev/video0 \
-			--volume='/dev/input:/dev/input' \
-			--volume='${HOME}/.Xauthority:/root/.Xauthority:rw' \
-			--volume='/tmp/.X11-unix/:/tmp/.X11-unix' \
-			--volume='${PWD}:/home/projects/ros2_ws/src/grabber_arm_car' \
+			--volume=/dev/input:/dev/input \
+			--volume=${HOME}/.Xauthority:/root/.Xauthority:rw \
+			--volume=/tmp/.X11-unix/:/tmp/.X11-unix \
+			--volume=${PWD}:/home/projects/ros2_ws/src/$${CONT_NAME} \
 			$${IMG_NAME} ${ENTRYPOINT}
 	else
 		xhost +
@@ -73,10 +73,10 @@ session:
 			-v /dev/bus/usb:/dev/bus/usb \
 			--device-cgroup-rule='c 189:* rmw' \
 			--device /dev/video0 \
-			--volume='/dev/input:/dev/input' \
-			--volume='${HOME}/.Xauthority:/root/.Xauthority:rw' \
-			--volume='/tmp/.X11-unix/:/tmp/.X11-unix' \
-			--volume='${PWD}:/home/projects/ros2_ws/src/grabber_arm_car' \
+			--volume=/dev/input:/dev/input \
+			--volume=${HOME}/.Xauthority:/root/.Xauthority:rw \
+			--volume=/tmp/.X11-unix/:/tmp/.X11-unix \
+			--volume=${PWD}:/home/projects/ros2_ws/src/$${CONT_NAME} \
 			$${IMG_NAME} ${ENTRYPOINT}
 	fi
 
