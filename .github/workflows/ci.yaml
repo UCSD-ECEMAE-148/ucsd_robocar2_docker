@@ -75,7 +75,7 @@ jobs:
           pull: true
           push: true
           tags: |
-            ghcr.io/triton-ai/${{ matrix.SAVE_NAME }}:${{ steps.get-ref.outputs.tag }}
+            ghcr.io/ucsd-ecemae-148/${{ matrix.SAVE_NAME }}:${{ steps.get-ref.outputs.tag }}
           ssh: |
             default=${{ env.SSH_AUTH_SOCK }}
           cache-from: type=local,src=/tmp/.buildx-cache-${{ matrix.SAVE_NAME }}
@@ -91,7 +91,7 @@ jobs:
       - name: Save image name to Github Output
         id: save_image_name
         run: |
-          echo "image_name=ghcr.io/triton-ai/${{ matrix.SAVE_NAME }}:${{ steps.get-ref.outputs.tag }}" >> $GITHUB_OUTPUT
+          echo "image_name=ghcr.io/ucsd-ecemae-148/${{ matrix.SAVE_NAME }}:${{ steps.get-ref.outputs.tag }}" >> $GITHUB_OUTPUT
           echo "cache_name=${{ matrix.SAVE_NAME }}" >> $GITHUB_OUTPUT
           echo "tag_name=${{ steps.get-ref.outputs.tag }}" >> $GITHUB_OUTPUT
 
@@ -160,7 +160,7 @@ jobs:
           pull: true
           push: true
           tags: |
-            ghcr.io/triton-ai/${{ matrix.SAVE_NAME }}:${{ steps.get-ref.outputs.tag }}
+            ghcr.io/ucsd-ecemae-148/${{ matrix.SAVE_NAME }}:${{ steps.get-ref.outputs.tag }}
           ssh: |
             default=${{ env.SSH_AUTH_SOCK }}
           cache-from: type=local,src=/tmp/.buildx-cache-${{ matrix.SAVE_NAME }}
@@ -176,6 +176,6 @@ jobs:
       - name: Save image name to Github Output
         id: save_image_name
         run: |
-          echo "image_name=ghcr.io/triton-ai/${{ matrix.SAVE_NAME }}:${{ steps.get-ref.outputs.tag }}" >> $GITHUB_OUTPUT
+          echo "image_name=ghcr.io/ucsd-ecemae-148/${{ matrix.SAVE_NAME }}:${{ steps.get-ref.outputs.tag }}" >> $GITHUB_OUTPUT
           echo "cache_name=${{ matrix.SAVE_NAME }}" >> $GITHUB_OUTPUT
           echo "tag_name=${{ steps.get-ref.outputs.tag }}" >> $GITHUB_OUTPUT
