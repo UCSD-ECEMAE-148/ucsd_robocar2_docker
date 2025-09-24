@@ -169,6 +169,21 @@ function build_ros2() {
   source install/setup.bash
 }
 
+function build_ros2_pkg() {
+  cd /home/projects/ros2_ws
+  colcon build --packages-select $@
+  source install/setup.bash
+}
+complete -W "\
+  ucsd_robocar_actuator2_pkg \
+  ucsd_robocar_basics2_pkg \
+  ucsd_robocar_control2_pkg \
+  ucsd_robocar_lane_detection2_pkg \
+  ucsd_robocar_nav2_pkg \
+  ucsd_robocar_path2_pkg \
+  ucsd_robocar_sensor2_pkg\
+  " build_ros2_pkg
+
 # function source_ros_bridge() {
 #   source /opt/ros/noetic/setup.bash
 #   source /opt/ros/$ROS_DISTRO/setup.bash
