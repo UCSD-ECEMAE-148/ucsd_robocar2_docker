@@ -160,6 +160,7 @@ function source_ros2_pkg() {
 function source_ros2() {
   source_ros2_pkg
   cd /home/projects/ros2_ws
+  source install/setup.bash
 }
 
 function build_ros2() {

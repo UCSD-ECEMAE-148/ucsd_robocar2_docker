@@ -298,6 +298,9 @@ RUN mkdir -p /home/projects/sensor2_ws/src/cameras/oakd/src
 # -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
 WORKDIR /home/projects/sensor2_ws/src/cameras/oakd/src
 RUN git clone https://github.com/Triton-AI/multi_cam_oak_lite.git
+RUN pip3 install \
+    depthai==3.1.0 \
+    --break-system-packages
 WORKDIR /home/projects/sensor2_ws/src/cameras/oakd
 RUN echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"' | tee /etc/udev/rules.d/80-movidius.rules
 RUN [\
@@ -456,6 +459,10 @@ RUN [\
 #     source install/setup.bash"\
 #     ]
 
+RUN apt-get update && \
+    pip3 install \
+    numpy==1.26.4 \
+    --break-system-packages
 
 FROM ucsd_robocar2_dep as ucsd_robocar2
 #
