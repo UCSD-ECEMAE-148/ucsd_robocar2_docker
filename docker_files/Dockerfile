@@ -49,7 +49,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgl1-mesa-dev \
     libglu1-mesa-dev \
     build-essential \
-    libgtk-3-dev
+    libgtk-3-dev \
+    usbutils
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 # install ros2 packages
